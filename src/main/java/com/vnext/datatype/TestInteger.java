@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.vnext.datatype;
 
 import java.lang.reflect.Field;
@@ -32,16 +29,14 @@ public class TestInteger {
 
     }
 
-    public static void swap(Integer i1, Integer i2) {
+    private static void swap(Integer i1, Integer i2) {
         try {
             Field f = Integer.class.getDeclaredField("value");
             f.setAccessible(true);
             int tmp = i1;
             f.setInt(i1, i2);
             f.setInt(i2, tmp);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }

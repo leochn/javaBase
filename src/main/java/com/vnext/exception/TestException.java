@@ -18,7 +18,7 @@ public class TestException {
 		System.out.println("number = " + exceptionTest.getNumber());
 	}
 
-	public int getNum() {
+	private int getNum() {
 		try {
 			int a = 1 / 0;
 			System.out.println("a=" + a);
@@ -34,7 +34,7 @@ public class TestException {
 	}
 	
 	@SuppressWarnings("finally")
-	public int getNumber() {
+	private int getNumber() {
 		try {
 			int a = 1 / 0;
 			System.out.println("a=" + a);
