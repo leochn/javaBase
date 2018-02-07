@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.vnext.datatype;
+package com.vnext.w01datatype;
 
 /**
  * 装箱和拆箱
