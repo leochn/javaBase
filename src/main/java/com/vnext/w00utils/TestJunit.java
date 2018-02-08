@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.vnext.utils;
+package com.vnext.w00utils;
 
 import org.junit.*;
 
