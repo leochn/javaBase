@@ -41,5 +41,22 @@ public class TestArray {
         System.out.println(arr[0][0]);
         System.out.println(arr[2][0]);
     }
+    
+	@Test
+	public void test03() {
+		int[] arr = new int[] { 1, 2, 9, 5, 3 };
+		System.out.println(arr.toString());
+		int sum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			sum += arr[i];
+		}
+		System.out.println("数组的和为：" + sum);
+
+		Arrays.sort(arr);
+		System.out.println("用工具类Arrays进行排序后的结果：");
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + ",");
+		}
+	}
 
 }

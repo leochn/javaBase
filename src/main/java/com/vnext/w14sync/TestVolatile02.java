@@ -8,7 +8,7 @@ package com.vnext.w14sync;
  */
 public class TestVolatile02 extends Thread{
     /*volatile 关键字只具有可见性，并没有原子性。要实现原子性建议使用atomic类系列的对象，
-    支持原子性操作（注意atomic类只保证本身方法原子性，并不保证多次操作的原子性*/）
+    支持原子性操作（注意atomic类只保证本身方法原子性，并不保证多次操作的原子性*/
 
     // 1. volatile 并不能保证最终结果的原子性
     private static volatile int count;
