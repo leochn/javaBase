@@ -36,6 +36,8 @@ public class TestProduceConsume {
 
 }
 
+
+// 永远在循环（loop）里调用 wait 和 notify
 class Clerk{
     private int product;
 

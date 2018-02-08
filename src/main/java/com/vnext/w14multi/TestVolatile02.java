@@ -1,4 +1,4 @@
-package com.vnext.w14sync;
+package com.vnext.w14multi;
 
 /**
  * volatile关键字能保证可见性没有错，但是下面的程序错在没能保证原子性
