@@ -1,6 +1,7 @@
 package com.vnext.w14multi;
 
 /**
+ * 脏读
  * @author leo
  * @version 2018/2/7 21:23
  * @since 1.0.0
