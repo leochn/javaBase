@@ -12,9 +12,11 @@ public class TestString {
     public void test01(){
         String s0 = "hello";
         String s1 = "hello";
+        String c = s0 + s1;
         String s2 = "he" + "llo";
         System.out.println(s0 == s1);  //true
         System.out.println(s0 == s2);  //true
+        System.out.println(s0 == c);   //false
         String s3 = new String("hello");
         String s4 = new String("hello");
         System.out.println(s0 == s3);  //false

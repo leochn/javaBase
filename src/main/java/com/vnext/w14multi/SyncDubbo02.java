@@ -6,6 +6,7 @@ package com.vnext.w14multi;
  * @since 1.0.0
  */
 public class SyncDubbo02 {
+
     static class Main{
         public int i = 20;
         public synchronized void operationSup(){

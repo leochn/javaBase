@@ -1,6 +1,7 @@
 package com.vnext.w14multi;
 
 /**
+ * volatile关键字的主要作用是使变量在多个线程间可见
  * @author leo
  * @version 2018/2/7 22:18
  * @since 1.0.0

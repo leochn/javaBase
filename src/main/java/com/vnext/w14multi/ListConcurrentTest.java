@@ -6,7 +6,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author leo
+ * List集合的并发测试，在同一时间多个线程无法对同一个List进行读取和增删，否则就会抛出并发异常，
+ * 可以使用CopyOnWriteArrayList。
  * @version 2018/2/10 19:14
  * @since 1.0.0
  */
@@ -15,7 +16,8 @@ public class ListConcurrentTest{
 
     // 在同一时间多个线程无法对同一个List进行读取和增删，否则就会抛出并发异常。
     // private List<String> mList = new ArrayList<String>();
-    private List<String> mList = new CopyOnWriteArrayList<String>();
+
+    private List<String> mList = new CopyOnWriteArrayList<>();
 
     public static void main(String args[]){
         new ListConcurrentTest().start();

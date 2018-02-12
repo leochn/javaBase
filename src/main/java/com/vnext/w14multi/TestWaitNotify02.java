@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ * wait方法释放锁，notify方法不释放锁,使用CountDownLatch 线程通信的及时通知
  * @author leo
  * @version 2018/2/8 19:33
  * @since 1.0.0

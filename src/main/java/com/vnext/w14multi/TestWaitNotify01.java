@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * wait方法释放锁，notify方法不释放锁
  * @author leo
  * @version 2018/2/8 19:33
  * @since 1.0.0
@@ -17,10 +18,6 @@ public class TestWaitNotify01 {
     public int size(){
         return list.size();
     }
-
-
-
-
 
     // 1. wait方法释放锁，notify方法不释放锁
     public static void main(String[] args) {

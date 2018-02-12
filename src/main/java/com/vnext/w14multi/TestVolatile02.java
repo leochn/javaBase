@@ -1,7 +1,8 @@
 package com.vnext.w14multi;
 
 /**
- * volatile关键字能保证可见性没有错，但是下面的程序错在没能保证原子性
+ * 1.volatile关键字能保证可见性没有错，但是不能保证原子性
+ * 2. AtomicInteger保证了最终结果的原子性
  * @author leo
  * @version 2018/2/7 23:15
  * @since 1.0.0

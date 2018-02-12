@@ -1,6 +1,7 @@
 package com.vnext.w14multi;
 
 /**
+ * 线程安全问题，不同线程使用同一个变量
  * @author leo
  * @version 2018/2/9 7:21
  * @since 1.0.0
