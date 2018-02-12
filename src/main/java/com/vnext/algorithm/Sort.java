@@ -3,6 +3,11 @@ package com.vnext.algorithm;
 import java.util.Arrays;
 
 /**
+ * 排序算法是《数据结构与算法》中最基本的算法之一.
+ * 排序算法可以分为内部排序和外部排序，内部排序是数据记录在内存中进行排序，而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。
+ * 关于稳定性：
+ *    稳定的排序算法：冒泡排序、插入排序、归并排序和基数排序。
+ *    不是稳定的排序算法：选择排序、快速排序、希尔排序、堆排序。
  * @author leo
  * @since 2018/2/11 17:55
  */
@@ -24,13 +29,11 @@ public class Sort {
         for (int i = 1; i < arr.length; i++) {
             // 设定一个标记，若为true，则表示此次循环没有进行交换，也就是待排序列已经有序，排序已经完成。
             boolean flag = true;
-
             for (int j = 0; j < arr.length - i; j++) {
                 if (arr[j] > arr[j + 1]) {
                     int tmp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = tmp;
-
                     flag = false;
                 }
             }
@@ -43,10 +46,11 @@ public class Sort {
 
     /**
      * 选择排序
+     *    选择排序是一种简单直观的排序算法，无论什么数据进去都是 O(n²) 的时间复杂度。所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。
      * 算法步骤
-     * 1.首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置
-     * 2.再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。
-     * 3.重复第二步，直到所有元素均排序完毕。
+     *    1.首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置
+     *    2.再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。
+     *    3.重复第二步，直到所有元素均排序完毕。
      * @param sourceArray 元数据
      * @return 返回数据
      */
@@ -158,10 +162,8 @@ public class Sort {
             return arr;
         }
         int middle = (int) Math.floor(arr.length / 2);
-
         int[] left = Arrays.copyOfRange(arr, 0, middle);
         int[] right = Arrays.copyOfRange(arr, middle, arr.length);
-
         return merge(mergeSort(left), mergeSort(right));
     }
 
@@ -190,6 +192,7 @@ public class Sort {
 
 
     /**
+     * 快速排序
      * 算法步骤：
      * 1.从数列中挑出一个元素，称为 “基准”（pivot）;
      * 2.重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。
@@ -232,6 +235,257 @@ public class Sort {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+    }
+
+
+
+    /**
+     堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。
+        堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。
+        堆排序可以说是一种利用堆的概念来排序的选择排序。
+
+     分为两种方法：
+        大顶堆：每个节点的值都大于或等于其子节点的值，在堆排序算法中用于升序排列；
+        小顶堆：每个节点的值都小于或等于其子节点的值，在堆排序算法中用于降序排列；
+     堆排序的平均时间复杂度为 Ο(nlogn)。
+     算法步骤：
+        创建一个堆 H[0……n-1]；
+        把堆首（最大值）和堆尾互换；
+        把堆的尺寸缩小 1，并调用 shift_down(0)，目的是把新的数组顶端数据调整到相应位置；
+        重复步骤 2，直到堆的尺寸为 1
+     * @param sourceArray 元数据
+     * @return 返回数据
+     */
+    public static int[] heapSort(int[] sourceArray){
+        // 对 arr 进行拷贝，不改变参数内容
+        int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
+        int len = arr.length;
+        buildMaxHeap(arr, len);
+        for (int i = len - 1; i > 0; i--) {
+            swap(arr, 0, i);
+            len--;
+            heapify(arr, 0, len);
+        }
+        return arr;
+    }
+
+    private static void buildMaxHeap(int[] arr, int len) {
+        for (int i = (int) Math.floor(len / 2); i >= 0; i--) {
+            heapify(arr, i, len);
+        }
+    }
+
+    private static void heapify(int[] arr, int i, int len) {
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        int largest = i;
+        if (left < len && arr[left] > arr[largest]) {
+            largest = left;
+        }
+        if (right < len && arr[right] > arr[largest]) {
+            largest = right;
+        }
+        if (largest != i) {
+            swap(arr, i, largest);
+            heapify(arr, largest, len);
+        }
+    }
+
+    /**
+     计数排序:
+        计数排序的核心在于将输入的数据值转化为键存储在额外开辟的数组空间中。
+        作为一种线性时间复杂度的排序，计数排序要求输入的数据必须是有确定范围的整数。
+     * @param sourceArray 元数据
+     * @return 返回数据
+     */
+    public static int[] countingSort(int[] sourceArray){
+        // 对 arr 进行拷贝，不改变参数内容
+        int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
+        int maxValue = getMaxValue(arr);
+        return countingSort(arr, maxValue);
+    }
+
+    private static int[] countingSort(int[] arr, int maxValue) {
+        int bucketLen = maxValue + 1;
+        int[] bucket = new int[bucketLen];
+
+        for (int value : arr) {
+            bucket[value]++;
+        }
+        int sortedIndex = 0;
+        for (int j = 0; j < bucketLen; j++) {
+            while (bucket[j] > 0) {
+                arr[sortedIndex++] = j;
+                bucket[j]--;
+            }
+        }
+        return arr;
+    }
+
+    private static int getMaxValue(int[] arr) {
+        int maxValue = arr[0];
+        for (int value : arr) {
+            if (maxValue < value) {
+                maxValue = value;
+            }
+        }
+        return maxValue;
+    }
+
+    /**
+     桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。
+     为了使桶排序更加高效，我们需要做到这两点：
+        在额外空间充足的情况下，尽量增大桶的数量
+        使用的映射函数能够将输入的 N 个数据均匀的分配到 K 个桶中
+        同时，对于桶中元素的排序，选择何种比较排序算法对于性能的影响至关重要。
+     * @param sourceArray 元数据
+     * @return 返回数据
+     */
+    public static int[] bucketSort (int[] sourceArray){
+        // 对 arr 进行拷贝，不改变参数内容
+        int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
+
+        return bucketSort(arr, 5);
+    }
+
+    private static int[] bucketSort(int[] arr, int bucketSize) {
+        if (arr.length == 0) {
+            return arr;
+        }
+        int minValue = arr[0];
+        int maxValue = arr[0];
+        for (int value : arr) {
+            if (value < minValue) {
+                minValue = value;
+            } else if (value > maxValue) {
+                maxValue = value;
+            }
+        }
+
+        int bucketCount = (int) Math.floor((maxValue - minValue) / bucketSize) + 1;
+        int[][] buckets = new int[bucketCount][0];
+        // 利用映射函数将数据分配到各个桶中
+        for (int i = 0; i < arr.length; i++) {
+            int index = (int) Math.floor((arr[i] - minValue) / bucketSize);
+            buckets[index] = arrAppend(buckets[index], arr[i]);
+        }
+        int arrIndex = 0;
+        for (int[] bucket : buckets) {
+            if (bucket.length <= 0) {
+                continue;
+            }
+            // 对每个桶进行排序，这里使用了插入排序
+            bucket = insertSort(bucket);
+            for (int value : bucket) {
+                arr[arrIndex++] = value;
+            }
+        }
+
+        return arr;
+    }
+
+    /**
+     * 自动扩容，并保存数据
+     *
+     * @param arr
+     * @param value
+     */
+    private static int[] arrAppend(int[] arr, int value) {
+        arr = Arrays.copyOf(arr, arr.length + 1);
+        arr[arr.length - 1] = value;
+        return arr;
+    }
+
+    /**
+     基数排序:
+        是一种非比较型整数排序算法，其原理是将整数按位数切割成不同的数字，然后按每个位数分别比较。
+        由于整数也可以表达字符串（比如名字或日期）和特定格式的浮点数，所以基数排序也不是只能使用于整数.
+     基数排序 vs 计数排序 vs 桶排序
+        这三种排序算法都利用了桶的概念，但对桶的使用方法上有明显差异：
+        基数排序：根据键值的每位数字来分配桶；
+        计数排序：每个桶只存储单一键值；
+        桶排序：每个桶存储一定范围的数值；
+     * @param sourceArray 元数据
+     * @return 返回数据
+     */
+    public static int[] radixSort (int[] sourceArray){
+        // 对 arr 进行拷贝，不改变参数内容
+        int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
+        int maxDigit = getMaxDigit(arr);
+        return radixSort(arr, maxDigit);
+    }
+
+    /**
+     * 获取最高位数
+     */
+    private static int getMaxDigit(int[] arr) {
+        int maxValue = getMaxValue(arr);
+        return getNumLenght(maxValue);
+    }
+
+    protected static int getNumLenght(long num) {
+        if (num == 0) {
+            return 1;
+        }
+        int lenght = 0;
+        for (long temp = num; temp != 0; temp /= 10) {
+            lenght++;
+        }
+        return lenght;
+    }
+
+    private static int[] radixSort(int[] arr, int maxDigit) {
+        int mod = 10;
+        int dev = 1;
+        for (int i = 0; i < maxDigit; i++, dev *= 10, mod *= 10) {
+            // 考虑负数的情况，这里扩展一倍队列数，其中 [0-9]对应负数，[10-19]对应正数 (bucket + 10)
+            int[][] counter = new int[mod * 2][0];
+
+            for (int j = 0; j < arr.length; j++) {
+                int bucket = ((arr[j] % mod) / dev) + mod;
+                counter[bucket] = arrAppend(counter[bucket], arr[j]);
+            }
+            int pos = 0;
+            for (int[] bucket : counter) {
+                for (int value : bucket) {
+                    arr[pos++] = value;
+                }
+            }
+        }
+
+        return arr;
+    }
+
+    public static void main(String[] args) {
+        int[] source = new int[6];
+        for (int i = 0; i < source.length; i++) {
+            source[i] = (int) (Math.random() * 100);
+        }
+        long startTime = System.currentTimeMillis();
+        int[] bubbleSort = bubbleSort(source);
+        long endTime = System.currentTimeMillis();
+        System.out.println("time=" + (endTime - startTime) + "ms");
+
+        startTime = System.currentTimeMillis();
+        int[] selectionSort = selectionSort(source);
+        endTime = System.currentTimeMillis();
+        System.out.println("time=" + (endTime - startTime) + "ms");
+
+        startTime = System.currentTimeMillis();
+        int[] insertSort = insertSort(source);
+        endTime = System.currentTimeMillis();
+        System.out.println("time=" + (endTime - startTime) + "ms");
+
+        startTime = System.currentTimeMillis();
+        int[] shellSort = shellSort(source);
+        endTime = System.currentTimeMillis();
+        System.out.println("time=" + (endTime - startTime) + "ms");
+
+        startTime = System.currentTimeMillis();
+        int[] mergeSort = mergeSort(source);
+        endTime = System.currentTimeMillis();
+        System.out.println("time=" + (endTime - startTime) + "ms");
+
     }
 
 
