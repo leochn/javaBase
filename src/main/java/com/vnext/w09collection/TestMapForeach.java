@@ -15,6 +15,7 @@ import java.util.Set;
 public class TestMapForeach {
 
 	public static void main(String[] args) {
+
 		
 		HashMap<String, String> map = new HashMap<>();
 		int mapNum = 10000;// 设置map数据量
