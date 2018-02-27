@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  * @author leo
  * @since 2018/2/27 10:53
  */
-public class TestStreamAPI {
+public class TestStreamAPI01 {
 /*
  * 一、Stream API 的操作步骤：
  *
