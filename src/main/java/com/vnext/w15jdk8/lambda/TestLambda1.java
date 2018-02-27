@@ -147,4 +147,29 @@ public class TestLambda1 {
                 .forEach(System.out::println);
     }
 
+    // 需求：用于处理字符串
+    public String strHandler(String str,MyFunction mf){
+        return mf.getValue(str);
+    }
+
+    @Test
+    public void test8(){
+        String s = strHandler("helloworld", (str) -> str);
+        System.out.println(s);
+        String s1 = strHandler("\t\t\t 我大华威武   ", (str) -> str.trim());
+        System.out.println(s1);
+    }
+
+
+    //需求：对于两个 Long 型数据进行处理
+    public void strLong(Long l1,Long l2,MyFunction2<Long ,Long > mf){
+        System.out.println(mf.getValue(l1,l2));
+    }
+
+    @Test
+    public void test9(){
+        strLong(120L,50L, (x,y) -> x + y);
+        strLong(120L,50L, (x,y) -> x * y);
+    }
+
 }
