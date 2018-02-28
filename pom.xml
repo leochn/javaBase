@@ -11,6 +11,7 @@
 	</parent>
 
 	<properties>
+		<util.apache.commons.lang3>3.5</util.apache.commons.lang3>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 	</properties>
@@ -37,6 +38,17 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
+		</dependency>
+
+		<!-- Apache common工具包 -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${util.apache.commons.lang3}</version>
 		</dependency>
 
     </dependencies>

@@ -1,13 +1,15 @@
 package com.vnext.w00utils;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.junit.Test;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author leo
@@ -47,8 +49,19 @@ public class TimeUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+	}
+
+	private static Map<String, DateTimeFormatter> DATE_TYPE_MAP = new HashMap<>(3);
+
+	public static DateTimeFormatter getDateType(String dateType) {
+		if (DATE_TYPE_MAP.isEmpty()) {
+			DATE_TYPE_MAP.put("hour", HOUR_MAP);
+			DATE_TYPE_MAP.put("day", DAY_MAP);
+			DATE_TYPE_MAP.put("month", MONTH_MAP);
+			DATE_TYPE_MAP.put("year", YEAR_MAP);
+		}
+
+		return DATE_TYPE_MAP.getOrDefault(dateType, HOUR_MAP);
 	}
 	
 	public static DateTime plus(String dateType, DateTime dateTime) {
