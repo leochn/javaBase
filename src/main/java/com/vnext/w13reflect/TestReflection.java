@@ -140,4 +140,3 @@ public class TestReflection {
 		System.out.println(password);
 	}
 }
-// The last packet successfully received from the server was 33,315,876 milliseconds ago.  The last packet sent successfully to the server was 12 milliseconds ago
