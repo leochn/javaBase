@@ -8,8 +8,10 @@ package com.vnext.w17jvm;
 public class MyTest10 {
 
     public static void main(String[] args) throws Exception {
-        Class<?> aClass = Class.forName("com.vnext.w17jvm.QWE1"); // sun.misc.Launcher$AppClassLoader@18b4aac2
-        System.out.println(aClass.getClassLoader());
+        Class<?> aClass = Class.forName("com.vnext.w17jvm.QWE1");
+
+        System.out.println(aClass.getClassLoader()); // sun.misc.Launcher$AppClassLoader@18b4aac2
+        // sun.misc.Launcher 是java虚拟机的入口应用
 
         Class<?> aClass1 = Class.forName("java.lang.String");
         System.out.println(aClass1.getClassLoader()); // null
