@@ -62,15 +62,13 @@ public class HistoryData {
 
         HistoryData that = (HistoryData) o;
 
-        if (avgData != null ? !avgData.equals(that.avgData) : that.avgData != null) return false;
         if (idService != null ? !idService.equals(that.idService) : that.idService != null) return false;
         return dateTime != null ? dateTime.equals(that.dateTime) : that.dateTime == null;
     }
 
     @Override
     public int hashCode() {
-        int result = avgData != null ? avgData.hashCode() : 0;
-        result = 31 * result + (idService != null ? idService.hashCode() : 0);
+        int result = idService != null ? idService.hashCode() : 0;
         result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
         return result;
     }
