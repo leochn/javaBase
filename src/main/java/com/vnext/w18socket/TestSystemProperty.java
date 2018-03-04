@@ -12,6 +12,7 @@ import java.util.Map;
 public class TestSystemProperty {
 
     public static void main(String[] args) throws UnknownHostException {
+        
         InetAddress addr;
         addr = InetAddress.getLocalHost();
         String ip = addr.getHostAddress();
