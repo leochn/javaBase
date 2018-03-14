@@ -41,6 +41,7 @@ public class TimeUtil {
 		try {
 			Date start = sdf.parse("2018-02-27 23:59:00");
 			Date end = sdf.parse("2018-03-01 00:10:00");
+
 			long time = end.getTime();
 			long time2 = start.getTime();
 			long t = time - time2;
