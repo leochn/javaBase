@@ -41,9 +41,10 @@ public class TestProduceConsume {
 class Clerk{
     private int product;
 
-    // 生产产品
+    // 进货
     public synchronized void addProduct(){
         if (product >= 20){
+            System.out.println("产品已满！");
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -56,9 +57,10 @@ class Clerk{
         }
     }
 
-    // 消费产品
-    public synchronized void consumeProduct(){
+    // 卖货
+    public synchronized void saleProduct(){
         if (product <= 0) {
+            System.out.println("缺货！");
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -83,7 +85,15 @@ class Producer implements Runnable{
     @Override
     public void run() {
         System.out.println("生产者开始生成产品...");
-        while (true) {
+        /*while (true) {
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            clerk.addProduct();
+        }*/
+        for (int i = 0; i < 20 ; i++) {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
@@ -105,13 +115,22 @@ class Consumer implements Runnable{
     @Override
     public void run() {
         System.out.println("消费者消费产品...");
-        while (true) {
+       /* while (true) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            clerk.consumeProduct();
+            clerk.saleProduct();
+        }*/
+
+        for (int i = 0; i <20 ; i++) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            clerk.saleProduct();
         }
 
     }

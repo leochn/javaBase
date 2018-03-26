@@ -1,6 +1,7 @@
 package com.vnext.w19juc.juc01;
 
 /**
+ * 1. 内存可见性（volatile）
  * @author leo
  * @version 2018/3/22 7:10
  * @since 1.0.0
@@ -36,8 +37,14 @@ class ThreadDemo implements Runnable {
     private volatile boolean flag = false;
 
     //private boolean flag = false;
-    // 如果不加volatile关键字，main线程永远无法进入while中的if里面
-    // 原因:
+    /*
+      如果不加 volatile 关键字，main线程永远无法进入while中的if里面
+      原因:不加 volatile 时，main线程和thread1线程在执行的代码前，在主内存中获取 flag 变量的副本，
+      在main线程和thread1线程运行的时候，他们之间，这个 flag 变量是不可见的，相对独立。
+
+      而如果 flag 变量加了volatile 关键字，main线程和thread1线程在运行的时候，相当于直接对主内存中的 flag 变量进行操作。
+      所以该变量在线程之间可见。
+     */
 
     @Override
     public void run() {
