@@ -1,7 +1,9 @@
 package com.vnext.w18socket;
 
 import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.UnknownHostException;
+import java.util.Enumeration;
 import java.util.Map;
 
 /**
@@ -54,5 +56,30 @@ public class TestSystemProperty {
         System.out.println("操作系统用户名：" + System.getProperty("user.name")); // 用户名
         System.out.println("操作系统用户的主目录：" + System.getProperty("user.home")); // 用户的主目录
         System.out.println("当前程序所在目录：" + System.getProperty("user.dir")); // 当前程序所在目录
+
+        System.out.println("---------------------------------");
+        String os = System.getProperty("os.name");
+
+        if (os.toLowerCase().startsWith("win")) {
+            System.out.println("windows...");
+        }else {
+            System.out.println("linux...");
+            // 根据网卡取本机配置的IP
+            Enumeration<NetworkInterface> netInterfaces = null;
+            try {
+                netInterfaces = NetworkInterface.getNetworkInterfaces();
+                while (netInterfaces.hasMoreElements()) {
+                    NetworkInterface ni = netInterfaces.nextElement();
+                    System.out.println("DisplayName:" + ni.getDisplayName());
+                    System.out.println("Name:" + ni.getName());
+                    Enumeration<InetAddress> ips = ni.getInetAddresses();
+                    while (ips.hasMoreElements()) {
+                        System.out.println("IP:" + ips.nextElement().getHostAddress());
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
