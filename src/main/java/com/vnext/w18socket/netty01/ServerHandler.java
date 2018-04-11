@@ -23,15 +23,15 @@ public class ServerHandler extends ChannelHandlerAdapter {
         byte[] req = new byte[buf.readableBytes()];
         buf.readBytes(req);
         String body = new String(req, "utf-8");
-        System.out.println("Server :" + body);
-        String response = "进行返回给客户端的响应：" + body;
+        System.out.println("Server端收到的消息:" + body);
+        String response = "服务端返回给客户端的消息：" + body;
         ctx.writeAndFlush(Unpooled.copiedBuffer(response.getBytes()));
         //.addListener(ChannelFutureListener.CLOSE);
     }
 
     public void channelReadComplete(ChannelHandlerContext ctx)
             throws Exception {
-        System.out.println("读完了");
+        System.out.println("服务端,读完了...");
         ctx.flush();
     }
 

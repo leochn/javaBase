@@ -35,10 +35,12 @@ public class Client {
 
         //发送消息
         Thread.sleep(1000);
+        System.out.println("client准备发送数据...");
         cf1.channel().writeAndFlush(Unpooled.copiedBuffer("777".getBytes()));
         cf1.channel().writeAndFlush(Unpooled.copiedBuffer("666".getBytes()));
         //cf2.channel().writeAndFlush(Unpooled.copiedBuffer("888".getBytes()));
         Thread.sleep(2000);
+        System.out.println("client准备再次发送数据...");
         cf1.channel().writeAndFlush(Unpooled.copiedBuffer("888".getBytes()));
         //cf2.channel().writeAndFlush(Unpooled.copiedBuffer("666".getBytes()));
 

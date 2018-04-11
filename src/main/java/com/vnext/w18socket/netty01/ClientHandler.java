@@ -14,6 +14,7 @@ public class ClientHandler extends ChannelHandlerAdapter {
 
 
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    	System.out.println("Client channel active... ");
     }
 
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -25,7 +26,7 @@ public class ClientHandler extends ChannelHandlerAdapter {
             buf.readBytes(req);
 
             String body = new String(req, "utf-8");
-            System.out.println("Client :" + body );
+            System.out.println("Client接收到的消息:" + body );
             String response = "收到服务器端的返回信息：" + body;
         } finally {
             ReferenceCountUtil.release(msg);
