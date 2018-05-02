@@ -24,6 +24,8 @@ public class MyTest02 {
          ----------------
          TestClass01 static block
          2
+
+
          分析：
             涉及到类的初始化问题，类初始化才会执行static的静态代码块。
             java对类的使用分为主动使用和被动使用。

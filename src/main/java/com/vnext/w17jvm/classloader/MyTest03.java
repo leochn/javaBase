@@ -8,6 +8,7 @@ public class MyTest03 {
     static {
         System.out.println("MyTest03 static block!");
     }
+
     public static void main(String[] args) {
         System.out.println(Child.b);
         System.out.println("---------------------");
@@ -27,8 +28,9 @@ class Parent{
     }
 }
 
-class Child extends  Parent{
+class Child extends Parent {
     static int b = 3;
+
     static {
         System.out.println("Child static block!");
     }
