@@ -37,8 +37,11 @@ public class JdkProxyTest {
          */
 
         //不能用接口的实现类(PersonDaoImpl)来转换Proxy的实现类,它们是同级,应该用共同的接口(PersonDao)来转换
-        PersonDao personDao = (PersonDao) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), interceptor);
-        personDao.savePerson();
+        PersonDao proxy = (PersonDao) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), interceptor);
+        // 生成的代理对象proxy,代理对象的方法(proxy.savePerson),就把目标对象(target)和切面(transaction)结合在一起了.
+        // --> 代理方法 = 目标方法 + 通知
+        // 目标方法和通知是完全松耦合的
+        proxy.savePerson();
 
     }
 

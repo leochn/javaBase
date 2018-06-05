@@ -16,7 +16,7 @@ public class CGLibProxyTest {
      *       因为是继承，所以该类或方法最好不要声明成final
      *
      *   (3)jdk代理，代理类和目标类实现了共同的接口
-     *      通过cglib产生的代理对象，代理类是目标类的子类
+     *      通过cglib产生的代理对象，代理类是目标类的子类 --> enhancer.setSuperclass(target.getClass());
      */
     @Test
     public void testCGlib(){
@@ -24,7 +24,10 @@ public class CGLibProxyTest {
         Transaction transaction = new Transaction();
         MyInterceptor interceptor = new MyInterceptor(target, transaction);
         // cglib动态代理不需要接口.
-        PersonDaoImpl personDaoImpl = (PersonDaoImpl)interceptor.createProxy();
-        personDaoImpl.savePerson();
+        PersonDaoImpl proxy = (PersonDaoImpl)interceptor.createProxy();
+        // 生成的代理对象proxy,代理对象的方法(proxy.savePerson),就把目标对象(target)和切面(transaction)结合在一起了.
+        // --> 代理方法 = 目标方法 + 通知
+        // 目标方法和通知是完全松耦合的
+        proxy.savePerson();
     }
 }
