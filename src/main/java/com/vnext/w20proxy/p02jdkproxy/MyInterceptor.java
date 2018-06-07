@@ -26,12 +26,21 @@ public class MyInterceptor implements InvocationHandler {
         this.transaction = transaction;
     }
 
+    /**
+     * 执行目标对象的方法
+     * @param proxy 代理类对象
+     * @param method 被代理类的方法,即需要执行的方法
+     * @param args 方法的参数,需要执行的方法的参数
+     * @return
+     * @throws Throwable
+     */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
         String methodName = method.getName();
         if ("savePerson".equals(methodName) || "updatePerson".equals(methodName) || "deletePerson".equals(methodName)){
             this.transaction.beginTransaction();  // 开启事务
+            // 执行目标对象的方法
             method.invoke(target);                // 调用目标方法
             this.transaction.commit();            // 事务的提交
         }else {

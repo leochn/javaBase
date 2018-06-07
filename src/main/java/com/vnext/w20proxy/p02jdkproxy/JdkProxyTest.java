@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.lang.reflect.Proxy;
 
 /**
+ * 动态代理测试类JdkProxyTest
+ *
  * 1. 拦截器的invoke方法在什么时候执行?
  *      当在客户端,代理对象调用方法的时候,进入到了拦截器的invoke方法.
  * 2. 代理对象的方法体的内容是什么?
@@ -17,6 +19,7 @@ import java.lang.reflect.Proxy;
  */
 public class JdkProxyTest {
 
+    // http://rejoy.iteye.com/blog/1627405
 
     @Test
     public void testJdkProxy(){
@@ -26,7 +29,7 @@ public class JdkProxyTest {
          * 3. 创建一个拦截器
          * 4. 动态产生一个代理对象
          */
-        Object target = new PersonDaoImpl();
+        Object target = new PersonDaoImpl();  // 实例化目标对象
         Transaction transaction = new Transaction();
         MyInterceptor interceptor = new MyInterceptor(target, transaction);
 
@@ -36,13 +39,20 @@ public class JdkProxyTest {
          * 3.拦截器
          */
 
-        //不能用接口的实现类(PersonDaoImpl)来转换Proxy的实现类,它们是同级,应该用共同的接口(PersonDao)来转换
+        // 根据目标对象生成代理对象proxy
+        // 不能用接口的实现类(PersonDaoImpl)来转换Proxy的实现类,它们是同级,应该用共同的接口(PersonDao)来转换
         PersonDao proxy = (PersonDao) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), interceptor);
         // 生成的代理对象proxy,代理对象的方法(proxy.savePerson),就把目标对象(target)和切面(transaction)结合在一起了.
         // --> 代理方法 = 目标方法 + 通知
         // 目标方法和通知是完全松耦合的
-        proxy.savePerson();
+        proxy.savePerson();  // 调用代理对象的方法
 
+    }
+
+
+    @Test
+    public void testGenerateProxyClass() {
+        ProxyGeneratorUtils.writeProxyClassToHardDisk("D:/$Proxy11.class");
     }
 
 }
