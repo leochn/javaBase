@@ -42,10 +42,10 @@ public class Server {
                     }
                 });
 
-        //4 绑定连接
+        //4 绑定连接: 绑定服务器,直到绑定完成,调用sync()方法会阻塞直到服务器完成绑定.
         ChannelFuture cf = b.bind(8765).sync();
 
-        //等待服务器监听端口关闭
+        //等待服务器监听端口关闭:等待channel关闭,因为使用sync(),所以关闭操作也会阻塞
         cf.channel().closeFuture().sync();
         pGroup.shutdownGracefully();
         cGroup.shutdownGracefully();
