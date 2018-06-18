@@ -1,4 +1,4 @@
-package com.vnext.w14multi;
+package com.vnext.w14multi.m02base;
 
 /**
  * volatile关键字的主要作用是使变量在多个线程间可见
@@ -6,7 +6,7 @@ package com.vnext.w14multi;
  * @version 2018/2/7 22:18
  * @since 1.0.0
  */
-public class TestVolatile01 extends Thread{
+public class T01Volatile extends Thread{
     // volatile 概念：volatile关键字的主要作用是使变量在多个线程间可见.
     // volatile的作用就是强制线程到主内存（共享内存）里面去读取变量，
     //   而不去线程工作内存区里读取，从而实现了多个线程间的变量可见，也就是满足线程安全的可见性。
@@ -36,7 +36,7 @@ public class TestVolatile01 extends Thread{
    }
 
     public static void main(String[] args) throws InterruptedException {
-        TestVolatile01 tv = new TestVolatile01();
+        T01Volatile tv = new T01Volatile();
         tv.start();
         Thread.sleep(1000);
         tv.setRuning(false);

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.vnext.w12thread;
+package com.vnext.w12thread.singleton;
 
 /**
  * 饿汉式单例是指在方法调用前，实例就已经创建好了

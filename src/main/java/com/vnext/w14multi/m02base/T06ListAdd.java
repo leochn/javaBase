@@ -1,4 +1,4 @@
-package com.vnext.w14multi;
+package com.vnext.w14multi.m02base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
  * @version 2018/2/8 19:33
  * @since 1.0.0
  */
-public class TestWaitNotify01 {
+public class T06ListAdd {
     private volatile static List<String> list = new ArrayList<>();
 
     public void add(){
@@ -21,7 +21,7 @@ public class TestWaitNotify01 {
 
     // 1. wait方法释放锁，notify方法不释放锁
     public static void main(String[] args) {
-        final TestWaitNotify01 testWaitNotify = new TestWaitNotify01();
+        final T06ListAdd testWaitNotify = new T06ListAdd();
         // 实例化一个lock
         final Object lock = new Object();
         Thread t1 = new Thread(new Runnable() {
@@ -89,7 +89,7 @@ public class TestWaitNotify01 {
         当前线程：t1添加了一个元素..
         当前线程t2收到通知停止线程..
         Exception in thread "t2" java.lang.RuntimeException
-        at com.vnext.w14multi.TestWaitNotify01$2.run(TestWaitNotify01.java:64)
+        at com.vnext.w14multi.T06ListAdd$2.run(T06ListAdd.java:64)
         at java.lang.Thread.run(Thread.java:748)*/
     }
 

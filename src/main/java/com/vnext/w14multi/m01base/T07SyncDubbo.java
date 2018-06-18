@@ -1,14 +1,15 @@
-package com.vnext.w14multi;
+package com.vnext.w14multi.m01base;
 
 /**
+ * 重入锁:synchronized 锁重入
  * @author leo
  * @version 2018/2/7 21:37
  * @since 1.0.0
  */
-public class SyncDubbo02 {
+public class T07SyncDubbo {
 
     static class Main{
-        public int i = 20;
+        public int i = 10;
         public synchronized void operationSup(){
             try {
                 i--;
@@ -36,6 +37,24 @@ public class SyncDubbo02 {
     }
 
     public static void main(String[] args) {
+
+        /**
+         * 可重入锁即自己可以再次获取自己的内部锁，反之不可重入锁就造成死锁了而且在继承环境中子类可以调用父类的同步方法。
+         *
+         * 运行结果：
+         * Sub print i =9
+         * Main print i =8
+         * Sub print i =7
+         * Main print i =6
+         * Sub print i =5
+         * Main print i =4
+         * Sub print i =3
+         * Main print i =2
+         * Sub print i =1
+         * Main print i =0
+         */
+
+
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {

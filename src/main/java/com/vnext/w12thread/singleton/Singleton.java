@@ -1,9 +1,10 @@
 /**
  * 
  */
-package com.vnext.w12thread;
+package com.vnext.w12thread.singleton;
 
 /**
+ * 懒汉式
  * @author leo
  * @since 2018-02-06 18:04:53
  */

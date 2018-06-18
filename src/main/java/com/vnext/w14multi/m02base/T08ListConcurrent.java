@@ -1,4 +1,4 @@
-package com.vnext.w14multi;
+package com.vnext.w14multi.m02base;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
  * @version 2018/2/10 19:14
  * @since 1.0.0
  */
-public class ListConcurrentTest{
+public class T08ListConcurrent {
     private static final int THREAD_POOL_MAX_NUM = 10;
 
     // 在同一时间多个线程无法对同一个List进行读取和增删，否则就会抛出并发异常。
@@ -20,8 +20,9 @@ public class ListConcurrentTest{
     private List<String> mList = new CopyOnWriteArrayList<>();
 
     public static void main(String args[]){
-        new ListConcurrentTest().start();
+        new T08ListConcurrent().start();
     }
+
     private void initData() {
         for(int i = 0 ; i <= THREAD_POOL_MAX_NUM ; i ++){
             this.mList.add("...... Line "+(i+1)+" ......");

@@ -1,4 +1,4 @@
-package com.vnext.w14multi;
+package com.vnext.w14multi.m02base;
 
 /**
  * 1.volatile关键字能保证可见性没有错，但是不能保证原子性
@@ -7,7 +7,7 @@ package com.vnext.w14multi;
  * @version 2018/2/7 23:15
  * @since 1.0.0
  */
-public class TestVolatile02 extends Thread{
+public class T02Volatile extends Thread{
     /*volatile 关键字只具有可见性，并没有原子性。要实现原子性建议使用atomic类系列的对象，
     支持原子性操作（注意atomic类只保证本身方法原子性，并不保证多次操作的原子性*/
 
@@ -57,9 +57,9 @@ public class TestVolatile02 extends Thread{
 
 
     public static void main(String[] args) {
-        TestVolatile02[] arr = new TestVolatile02[10];
+        T02Volatile[] arr = new T02Volatile[10];
         for (int i = 0; i < 10 ; i++) {
-            arr[i] = new TestVolatile02();
+            arr[i] = new T02Volatile();
         }
         for (int i = 0; i < 10; i++) {
             arr[i].start();

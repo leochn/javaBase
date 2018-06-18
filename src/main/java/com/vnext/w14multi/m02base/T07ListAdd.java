@@ -1,4 +1,4 @@
-package com.vnext.w14multi;
+package com.vnext.w14multi.m02base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.concurrent.CountDownLatch;
  * @version 2018/2/8 19:33
  * @since 1.0.0
  */
-public class TestWaitNotify02 {
+public class T07ListAdd {
     private volatile static List<String> list = new ArrayList<>();
 
     public void add(){
@@ -24,7 +24,7 @@ public class TestWaitNotify02 {
 
     public static void main(String[] args) {
 
-        final TestWaitNotify02 testWaitNotify = new TestWaitNotify02();
+        final T07ListAdd testWaitNotify = new T07ListAdd();
         final CountDownLatch countDownLatch = new CountDownLatch(1);
 
         Thread t1 = new Thread(new Runnable() {

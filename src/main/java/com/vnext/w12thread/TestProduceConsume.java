@@ -1,6 +1,7 @@
 package com.vnext.w12thread;
 
 /**
+ * 生产者/消费者问题
  * @author leo
  * @since 2018/2/8 9:39
  */

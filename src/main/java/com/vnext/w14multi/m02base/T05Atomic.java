@@ -1,4 +1,4 @@
-package com.vnext.w14multi;
+package com.vnext.w14multi.m02base;
 
 /**
  * 线程安全问题，不同线程使用同一个变量
@@ -6,7 +6,7 @@ package com.vnext.w14multi;
  * @version 2018/2/9 7:21
  * @since 1.0.0
  */
-public class TestAtomic {
+public class T05Atomic {
 
     public static int i = 0;
 
@@ -25,7 +25,7 @@ public class TestAtomic {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    TestAtomic.increase();
+                    T05Atomic.increase();
                 }
             }).start();
         }
@@ -43,7 +43,7 @@ public class TestAtomic {
             i = 0;
             //同时启动 1000 个线程，并发计算i++
             multiThread(threadCnt);
-            System.out.println("运行第 " + (x+1 < 10 ? "0":"") + (x+1) + " 次的结果: i=" + TestAtomic.i);
+            System.out.println("运行第 " + (x+1 < 10 ? "0":"") + (x+1) + " 次的结果: i=" + T05Atomic.i);
         }
     }
 }

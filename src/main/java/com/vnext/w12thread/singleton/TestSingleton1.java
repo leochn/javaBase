@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.vnext.w12thread;
+package com.vnext.w12thread.singleton;
 
 /**
  * 单例-多线程测试

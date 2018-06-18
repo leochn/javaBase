@@ -1,12 +1,13 @@
-package com.vnext.w14multi;
+package com.vnext.w14multi.m01base;
 
 /**
- * 重入锁
+ * 重入锁:synchronized 锁重入
  * @author leo
  * @version 2018/2/7 21:37
  * @since 1.0.0
  */
-public class SyncDubbo01 {
+public class T06SyncDubbo {
+
     public synchronized void method1(){
         System.out.println("method1");
         method2();
@@ -24,7 +25,13 @@ public class SyncDubbo01 {
     }
 
     public static void main(String[] args) {
-        final SyncDubbo01 sd = new SyncDubbo01();
+
+        /**
+         * 即在使用synchronized时，当一个线程得到一个对象锁后，再次请求此对象锁时，是可以再次得到该对象的锁的。
+         * 也就是说在一个synchronized方法或块的内部调用本类的其他synchronized方法或块时，是永远可以得到锁的。
+         */
+
+        final T06SyncDubbo sd = new T06SyncDubbo();
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {

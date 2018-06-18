@@ -1,7 +1,5 @@
 package com.vnext.w22designpattern.d04singleton;
 
-import com.vnext.w12thread.Singleton;
-
 /**
  * 单例模式-懒汉式单例
  *
