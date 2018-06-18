@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.lang.reflect.Method;
 
 /**
+ * 可重复注解
  * @author leo
  * @version 2018/2/28 21:28
  * @since 1.0.0

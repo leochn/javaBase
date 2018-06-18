@@ -12,6 +12,15 @@ import java.util.Arrays;
  */
 public class TestArray {
 
+    /**
+     * 定义数组的方式
+     * 1.简化格式
+     * 数据类型 数组名称 [] = {值,值,......};
+     * 2.完整格式
+     * 数据类型 数组名称 [] = new 数据类型 数组名称 [] {值,值,......};
+     *
+     */
+
     @Test
     public void test01() {
         int[] s;
@@ -41,16 +50,22 @@ public class TestArray {
         System.out.println(arr[0][0]);
         System.out.println(arr[2][0]);
     }
-    
-	@Test
+
+    /**
+     * 数组的排序
+     */
+    @Test
 	public void test03() {
 		int[] arr = new int[] { 1, 2, 9, 5, 3 };
-		System.out.println(arr.toString());
+        System.out.println("数组：");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + ",");
+        }
 		int sum = 0;
 		for (int i = 0; i < arr.length; i++) {
 			sum += arr[i];
 		}
-		System.out.println("数组的和为：" + sum);
+		System.out.println("\n数组的和为：" + sum);
 
 		Arrays.sort(arr);
 		System.out.println("用工具类Arrays进行排序后的结果：");

@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 /**
+ *
  * @author leo
  * @since 2018/3/9 14:58
  */
@@ -12,7 +13,7 @@ public class MyTestFloat01 {
 
     public static void main(String[] args) {
 
-        float d = 756.2345566f;
+        float d = 756.2365566f;
 
         //方法一：最简便的方法，调用DecimalFormat类
         DecimalFormat df = new DecimalFormat(".00");

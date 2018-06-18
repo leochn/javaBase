@@ -19,6 +19,15 @@ public class TestLambda1 {
             new Employee(105, "田七", 38, 5555.55)
     );
 
+    public int add(int a ,int b){
+        return a + b;
+    }
+
+    @Test
+    public void test0(){
+
+    }
+
     //原来的匿名内部类
     @Test
     public void test1(){
@@ -120,6 +129,7 @@ public class TestLambda1 {
     }
 
     //优化方式三：Lambda 表达式
+    // lambda，箭头操作符的左侧，是接口中抽象方法的参数列表；箭头操作符的右侧，是对抽象方法的实现.
     @Test
     public void test6(){
         List<Employee> list = filterEmployee(emps,(x) -> x.getAge() > 30);

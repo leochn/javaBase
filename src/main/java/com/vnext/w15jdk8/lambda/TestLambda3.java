@@ -11,11 +11,15 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
+ * 函数式接口
  * @author leo
  * @since 2018/2/27 9:31
  */
 public class TestLambda3 {
+
     /*
+     * 函数式接口: 接口中只有一个抽象方法的接口，称之为函数式接口
+     *
      * Java8 内置的四大核心函数式接口
      *
      * Consumer<T> : 消费型接口

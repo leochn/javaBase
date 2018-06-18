@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.function.Consumer;
 
 /**
+ * Lambda 表达式的基础语法
  * @author leo
  * @since 2018/2/27 9:12
  */
@@ -17,6 +18,8 @@ public class TestLambda2 {
      *
      * 左侧：Lambda 表达式的参数列表
      * 右侧：Lambda 表达式中所需执行的功能， 即 Lambda 体
+     *
+     * lambda表达式，箭头操作符的左侧，是接口中抽象方法的参数列表；箭头操作符的右侧，是对抽象方法的实现.
      *
      * 语法格式一：无参数，无返回值
      * 		() -> System.out.println("Hello Lambda!");
@@ -42,6 +45,7 @@ public class TestLambda2 {
      * 上联：左右遇一括号省
      * 下联：左侧推断类型省
      * 横批：能省则省
+     *
      *
      * 二、Lambda 表达式需要“ 函数式接口 ” 的支持
      * 函数式接口：接口中只有一个抽象方法的接口，称为函数式接口。 可以使用注解 @FunctionalInterface 修饰

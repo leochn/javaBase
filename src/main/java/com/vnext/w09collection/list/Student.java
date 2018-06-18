@@ -50,7 +50,7 @@ public class Student {
     }  
     @Override  
     public String toString() {  
-        return "Student [name=" + name + ", money=" + money + "]";  
+        return "IStudent [name=" + name + ", money=" + money + "]";
     }  
       
 }  

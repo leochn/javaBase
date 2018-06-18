@@ -73,6 +73,27 @@ public class TestListStream01 {
         }
         long l3 = System.currentTimeMillis();
         System.out.println("for循环耗时="+ (l3-l1) + " ,size=" + result.size());
+
+
+        System.out.println("-----------map的key排序----------");
+        Map<Integer, List<DeviceInfo>> tempMap = deviceList.stream().collect(Collectors.groupingBy(DeviceInfo::getDeviceId));
+        for (Integer deviceId : tempMap.keySet()) {
+            System.out.println("deviceId=" + deviceId);
+        }
+
+        // 根据key排序;
+        Map<Integer, List<DeviceInfo>> finalMap = new LinkedHashMap<>();
+        tempMap.entrySet().stream().sorted(Map.Entry.<Integer, List<DeviceInfo>>comparingByKey().reversed())
+                .forEachOrdered(e -> finalMap.put(e.getKey(), e.getValue()));
+
+
+        for (Integer deviceId : finalMap.keySet()) {
+            System.out.println("finalMap.deviceId=" + deviceId);
+        }
+
+
+
+
     }
 
     public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {

@@ -3,7 +3,7 @@ package com.vnext.w13reflect;
 /**
  * 
  * @author leo
- * @data 2018-01-26 19:52:26
+ * @date 2018-01-26 19:52:26
  */
 @MyAnnotation(value = "helloAnnotation")
 public class Person extends Creature<String> implements Comparable<Object>,MyInterface{

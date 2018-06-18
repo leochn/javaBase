@@ -9,6 +9,8 @@ public class SubClass2 implements MyFun,MyFun2{
 
     @Override
     public String getName() {
-        return MyFun2.super.getName();
+        //return "djl";
+        //return MyFun2.super.getName();
+        return MyFun.super.getName();
     }
 }
