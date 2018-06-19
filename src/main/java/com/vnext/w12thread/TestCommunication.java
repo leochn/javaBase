@@ -28,6 +28,7 @@ public class TestCommunication {
         Thread t2 = new Thread(p, "BBB");
         t1.start();
         t2.start();
+
     }
 }
 

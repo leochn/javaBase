@@ -42,8 +42,8 @@ public class Test01SimpleDateFormat {
 //            results.add(pool.submit(task));
 //        }
 //
-//        for (Future<Date> future : results) {
-//            System.out.println(future.get());
+//        for (Future<Date> m04future : results) {
+//            System.out.println(m04future.get());
 //        }
 //        pool.shutdown();
 
@@ -58,8 +58,8 @@ public class Test01SimpleDateFormat {
 ////        for (int i = 0; i < 10; i++) {
 ////            results.add(pool.submit(task));
 ////        }
-////        for (Future<Date> future : results) {
-////            System.out.println(future.get());
+////        for (Future<Date> m04future : results) {
+////            System.out.println(m04future.get());
 ////        }
 ////        pool.shutdown();
 

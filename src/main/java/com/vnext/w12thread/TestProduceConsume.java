@@ -43,7 +43,8 @@ class Clerk{
     private int product;
 
     // 进货
-    public synchronized void addProduct(){
+    public synchronized void addProduct(String threadName){
+        System.out.println("Clerk.addProduct -> thradName = " + threadName);
         if (product >= 20){
             System.out.println("产品已满！");
             try {
@@ -59,7 +60,8 @@ class Clerk{
     }
 
     // 卖货
-    public synchronized void saleProduct(){
+    public synchronized void saleProduct(String threadName){
+        System.out.println("Clerk.saleProduct -> thradName = " + threadName);
         if (product <= 0) {
             System.out.println("缺货！");
             try {
@@ -85,7 +87,8 @@ class Producer implements Runnable{
 
     @Override
     public void run() {
-        System.out.println("生产者开始生成产品...");
+        String threadName = Thread.currentThread().getName();
+        System.out.println(threadName + "，开始生成产品...");
         /*while (true) {
             try {
                 Thread.sleep(10);
@@ -100,7 +103,7 @@ class Producer implements Runnable{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            clerk.addProduct();
+            clerk.addProduct(threadName);
         }
     }
 }
@@ -115,7 +118,8 @@ class Consumer implements Runnable{
 
     @Override
     public void run() {
-        System.out.println("消费者消费产品...");
+        String threadName = Thread.currentThread().getName();
+        System.out.println(threadName + "，开始消费产品...");
        /* while (true) {
             try {
                 Thread.sleep(500);
@@ -131,7 +135,7 @@ class Consumer implements Runnable{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            clerk.saleProduct();
+            clerk.saleProduct(threadName);
         }
 
     }

@@ -1,6 +1,7 @@
-package com.vnext.w14multi.future;
+package com.vnext.w14multi.m04future;
 
 /**
+ * futureData:包装的数据,假的数据
  * @author leo
  * @version 2018/2/10 20:32
  * @since 1.0.0

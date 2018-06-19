@@ -1,4 +1,4 @@
-package com.vnext.w14multi.future;
+package com.vnext.w14multi.m04future;
 
 /**
  * @author leo
@@ -6,6 +6,7 @@ package com.vnext.w14multi.future;
  * @since 1.0.0
  */
 public class FutureClient {
+
     public Data request(final String request) {
         // 1.我想要一个代理对象（Data接口的实现类）先返回个发送请求的客户端，告诉他请求已经接收到，可以做其他的事情。
         final FutureData futureData = new FutureData();
@@ -18,6 +19,8 @@ public class FutureClient {
                 futureData.setRealData(realData);
             }
         }).start();
+
+        // 1.1 直接返回futureData包装数据(假数据).
         return futureData;
     }
 }
