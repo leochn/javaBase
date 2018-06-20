@@ -1,13 +1,14 @@
-package com.vnext.w14multi.m02base;
+package com.vnext.w14multi.m05waitandnotify;
 
 /**
+ * wait()、notify 实现线程间通信
  * @author leo
  * @version 1.0.0
  * @date 2018-06-19 21:22:25
  */
-public class T12WaitAndNotify {
+public class T01WaitAndNotify {
     /**
-     * 1.wait()、notify/notifyAll() 方法是Object的本地final方法，无法被重写
+     * 1.wait()、notify/notifyAll() 方法是Object的本地final方法，这几个方法都是native方法，非Java语言实现。
      * 2.wait()使当前线程阻塞，前提是 必须先获得锁，一般配合synchronized 关键字使用.
      *     即，一般在synchronized 同步代码块里使用 wait()、notify/notifyAll() 方法。
      * 3.由于 wait()、notify/notifyAll() 在synchronized 代码块执行，说明当前线程一定是获取了锁的。
@@ -43,10 +44,10 @@ public class T12WaitAndNotify {
         public void run() {
             while (true) {
                 synchronized (object) {
-                    object.notify();  // 唤醒一个正处于等待状态的线程,只是唤醒沉睡的线程,而不会立即释放锁
+                    object.notify();  // 唤醒一个正处于等待状态的线程,只是唤醒沉睡的线程,而不会立即释放锁,会执行完后面的代码
                     if (data <= 100) {
                         try {
-                            Thread.sleep(10);
+                            Thread.sleep(500);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

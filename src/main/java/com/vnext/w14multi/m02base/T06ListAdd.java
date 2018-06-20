@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * wait()、notify实现线程间通信
  * wait方法释放锁，notify方法不释放锁
  * @author leo
  * @version 2018/2/8 19:33
