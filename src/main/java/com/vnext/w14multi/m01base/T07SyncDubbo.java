@@ -13,7 +13,7 @@ public class T07SyncDubbo {
         public synchronized void operationSup(){
             try {
                 i--;
-                System.out.println("Main print i =" + i);
+                System.out.println("Test print i =" + i);
                 Thread.sleep(100);
             } catch (Exception e){
                 e.printStackTrace();
@@ -43,15 +43,15 @@ public class T07SyncDubbo {
          *
          * 运行结果：
          * Sub print i =9
-         * Main print i =8
+         * Test print i =8
          * Sub print i =7
-         * Main print i =6
+         * Test print i =6
          * Sub print i =5
-         * Main print i =4
+         * Test print i =4
          * Sub print i =3
-         * Main print i =2
+         * Test print i =2
          * Sub print i =1
-         * Main print i =0
+         * Test print i =0
          */
 
 

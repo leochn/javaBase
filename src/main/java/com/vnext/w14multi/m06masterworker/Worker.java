@@ -1,4 +1,4 @@
-package com.vnext.w14multi.masterworker;
+package com.vnext.w14multi.m06masterworker;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -25,6 +25,7 @@ public class Worker implements Runnable {
         while(true){
             Task input = this.workQueue.poll();
             if(input == null) break;
+            // 真正的去做业务处理逻辑
             Object output = handle(input);
             this.resultMap.put(Integer.toString(input.getId()), output);
         }

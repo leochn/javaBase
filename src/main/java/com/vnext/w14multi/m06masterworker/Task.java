@@ -1,4 +1,4 @@
-package com.vnext.w14multi.masterworker;
+package com.vnext.w14multi.m06masterworker;
 
 /**
  * @author leo
