@@ -26,7 +26,7 @@ public class Worker implements Runnable {
             Task input = this.workQueue.poll();
             if(input == null) break;
             // 真正的去做业务处理逻辑
-            Object output = handle(input);
+            Object output = MyWorker.handle(input);
             this.resultMap.put(Integer.toString(input.getId()), output);
         }
     }

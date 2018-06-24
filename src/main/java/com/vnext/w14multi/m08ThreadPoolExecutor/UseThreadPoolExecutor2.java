@@ -1,4 +1,4 @@
-package com.vnext.w14multi.pools;
+package com.vnext.w14multi.m08ThreadPoolExecutor;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -25,7 +25,9 @@ public class UseThreadPoolExecutor2 implements Runnable{
     }
 
     public static void main(String[] args) throws InterruptedException {
+
         BlockingQueue<Runnable> queue = new LinkedBlockingQueue<Runnable>();
+
         ExecutorService executorService = new ThreadPoolExecutor(
                 5,
                 10,
@@ -35,6 +37,7 @@ public class UseThreadPoolExecutor2 implements Runnable{
         for (int i = 0; i < 20; i++) {
             executorService.execute(new UseThreadPoolExecutor2());
         }
+
         Thread.sleep(1000);
         System.out.println("queue size:" + queue.size());
         Thread.sleep(2000);
