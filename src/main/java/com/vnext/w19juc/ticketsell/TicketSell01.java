@@ -1,8 +1,5 @@
 package com.vnext.w19juc.ticketsell;
 
-import com.vnext.w00utils.TimeUtil;
-
-import javax.swing.text.ParagraphView;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 

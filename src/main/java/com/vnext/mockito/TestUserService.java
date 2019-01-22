@@ -20,7 +20,7 @@
 //    @Test
 //    public void testIsAdult4UserExist() {
 //        long userId = 123;
-//        User user = new User(userId, "张三", 19);
+//        OrgUser user = new OrgUser(userId, "张三", 19);
 //
 //        // 大于18岁的测试用例
 //        UserDao daoMock = mock(UserDao.class);
@@ -29,13 +29,13 @@
 //        assertTrue(_userService.isAdult(userId)); // 校验结果
 //
 //        // 等于18岁的测试用例
-//        User user2 = new User(userId, "李四", 18);
+//        OrgUser user2 = new OrgUser(userId, "李四", 18);
 //        when(daoMock.queryById(userId)).thenReturn(user2);
 //        _userService.setUserDao(daoMock);
 //        assertTrue(_userService.isAdult(userId));
 //
 //        // 小于18岁的测试用例
-//        User user3 = new User(userId, "王五", 17);
+//        OrgUser user3 = new OrgUser(userId, "王五", 17);
 //        when(daoMock.queryById(userId)).thenReturn(user3);
 //        _userService.setUserDao(daoMock);
 //        assertFalse(_userService.isAdult(userId));
