@@ -40,6 +40,7 @@ public class SQLUtil {
         for (String string : split) {
             String[] sp2 = string.split("=");
             listArr.add(StringHelper.camelCaseName(sp2[0].trim()));
+//            listArr.add(sp2[0].trim());
         }
         return listArr;
     }

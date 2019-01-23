@@ -5,6 +5,7 @@ import com.vnext.w23sourcecode.A02mybatis.orm.annotation.ExtParam;
 import com.vnext.w23sourcecode.A02mybatis.orm.annotation.ExtSelect;
 import com.vnext.w23sourcecode.A02mybatis.utils.JDBCUtil;
 import com.vnext.w23sourcecode.A02mybatis.utils.SQLUtil;
+import com.vnext.w23sourcecode.A02mybatis.utils.StringHelper;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
@@ -53,6 +54,7 @@ public class MyBatisInvocationHandler implements InvocationHandler {
             // 5.传递参数
             List<Object> sqlParams = new ArrayList<>();
             for (String parameterName : sqlSelectParameter) {
+                //Object parameterValue = paramsMap.get(StringHelper.camelCaseName(parameterName));
                 Object parameterValue = paramsMap.get(parameterName);
                 sqlParams.add(parameterValue);
             }
@@ -82,19 +84,20 @@ public class MyBatisInvocationHandler implements InvocationHandler {
                 Field[] declaredFields = returnType.getDeclaredFields();
                 for (Field field : declaredFields) {
                     String fieldName = field.getName();
-                    Object fieldValue = res.getObject(fieldName);
+                    Object fieldValue = res.getObject(StringHelper.underscoreName(fieldName));
                     field.setAccessible(true);
                     field.set(object, fieldValue);
                 }
-                // for (String parameteName : sqlSelectParameter) {
-                // // 获取参数值
-                // Object resultValue = res.getObject(parameteName);
-                // // 使用java的反射值赋值
-                // Field field = returnType.getDeclaredField(parameteName);
-                // // 私有方法允许访问
-                // field.setAccessible(true);
-                // field.set(object, resultValue);
-                // }
+
+//                 for (String parameteName : sqlSelectParameter) {
+//                     // 获取参数值
+//                     Object resultValue = res.getObject(StringHelper.underscoreName(parameteName));
+//                     // 使用java的反射值赋值
+//                     Field field = returnType.getDeclaredField(parameteName);
+//                     // 私有方法允许访问
+//                     field.setAccessible(true);
+//                     field.set(object, resultValue);
+//                 }
             }
             return object;
         }
