@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -79,6 +80,19 @@ public class TimeUtil {
 			return dateTime;
 		}
 	}
+
+	//判断实时值是否在有效时间内
+	public static Boolean checkValidateTime(String uploadTime,int beforeTime) {
+		Calendar queryTime = Calendar.getInstance();
+		queryTime.add(Calendar.MINUTE, -beforeTime);
+		String fiveMinutesAgo = TIME_ALL.format(queryTime.getTime());
+		int res = uploadTime.compareTo(fiveMinutesAgo);
+		if (res > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	public static void main(String[] args) {
 		
@@ -98,7 +112,22 @@ public class TimeUtil {
 		DateTime year = DateTime.parse("201802", YEAR_MAP);
 		System.out.println(year.toString("yyyy-MM-dd HH:mm:ss"));
 		System.out.println(plus("year", year).toString("yyyy-MM-dd HH:mm:ss"));
-		
+
+		String time = "2019-01-23 12:45:46";
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Long now = new Date().getTime();
+        long dateTime = 0;
+        try {
+            dateTime = sdf.parse(time).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+		System.out.println(dateTime);
+		System.out.println(now);
+		boolean b = now - dateTime <= 1000 * 60 * 5;
+		System.out.println(b);
+
 
 	}
 	
