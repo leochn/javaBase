@@ -34,19 +34,19 @@ public class AppleDO {
                 new AppleDO(7, 17, null)
         );
 
-        // List转Map ==> key:value （属性:对象）
+        // 1.List转Map ==> key:value （属性:对象）
         Map<Integer, AppleDO> collect = Optional.ofNullable(list)
                 .orElse(Collections.emptyList())
                 .stream().collect(Collectors.toMap(AppleDO::getId, appleDO -> appleDO));
         System.out.println(JSON.toJSON(collect));
 
-        // List转Map ==> key:value （属性:属性）
+        // 2.List转Map ==> key:value （属性:属性）
         Map<Integer, Integer> collect1 = Optional.ofNullable(list)
                 .orElse(Collections.emptyList())
                 .stream().collect(Collectors.toMap(AppleDO::getId, AppleDO::getWeight));
         System.out.println(JSON.toJSON(collect1));
 
-        // List转Map ==> key:value （属性:属性）
+        // 3.List转Map ==> key:value （属性:属性）
         // key重复时会异常: Exception in thread "main" java.lang.IllegalStateException: Duplicate key red
 //        Map<Integer, String> collect3 = Optional.ofNullable(list)
 //                .orElse(Collections.emptyList())
@@ -61,7 +61,7 @@ public class AppleDO {
 
 
 
-        // List转Map ==> 然后分组
+        // 4.List转Map ==> 然后分组
         Map<Integer, List<AppleDO>> collect5 = Optional.ofNullable(list)
                 .orElse(Collections.emptyList())
                 .stream().collect(Collectors.groupingBy(appleDO -> appleDO.getId()));
