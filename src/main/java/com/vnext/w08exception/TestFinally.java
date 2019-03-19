@@ -43,8 +43,8 @@ public class TestFinally {
 
 	public static int method2(){
 		try{
-			int a = 2;
-			System.out.println(10/0);
+			int a = 2/0;
+			//System.out.println(10/0);
 			return 1;
 		}catch(Exception e){
 			e.printStackTrace();
