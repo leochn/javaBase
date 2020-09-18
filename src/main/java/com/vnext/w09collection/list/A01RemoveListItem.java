@@ -3,6 +3,7 @@ package com.vnext.w09collection.list;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * JAVA中循环删除list中元素的方法总结
@@ -22,7 +23,8 @@ public class A01RemoveListItem {
         //test2(list);   // 报错: java.util.ConcurrentModificationException
 
         //test3(list);     // 这种方式可以正常的循环及删除.但要注意的是，使用iterator的remove方法
-        test4(list);
+//        test4(list);
+        testStream(list);
     }
 
     //正确
@@ -70,6 +72,11 @@ public class A01RemoveListItem {
         }
         System.out.println(list);
         // 这种方式的问题在于，删除某个元素后，list的大小发生了变化，而你的索引也在变化，所以会导致你在遍历的时候漏掉某些元素。
+    }
+
+    private static void testStream(List<Integer> list){
+        List<Integer> collect = list.stream().filter(id -> id % 2 != 0).collect(Collectors.toList());
+        System.out.println(collect);
     }
 
     private static List<Integer> test(){

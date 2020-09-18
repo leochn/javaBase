@@ -3,6 +3,7 @@ package com.vnext.w15jdk8.lambda;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author leo
@@ -180,6 +181,18 @@ public class TestLambda1 {
     public void test9(){
         strLong(120L,50L, (x,y) -> x + y);
         strLong(120L,50L, (x,y) -> x * y);
+    }
+
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add("01");
+        list.add("03");
+        list.add("05");
+
+        String collect = list.stream().collect(Collectors.joining(","));
+        //System.out.println(collect);
+        System.out.println(String.join(",", list));
+
     }
 
 }
